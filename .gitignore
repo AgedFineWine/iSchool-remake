@@ -1,0 +1,29 @@
+# ASP.NET Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS specific files
+.vs/
+
+# Local environment settings
+Properties/launchSettings.json
+
+# Ignore client-side libraries
+wwwroot/lib/
+
+# Ignore npm and libman cache
+node_modules/
+libman.json.cache
+
+# Secrets
+secrets.json
+appsettings.Development.json
+
+# Others
+*.log

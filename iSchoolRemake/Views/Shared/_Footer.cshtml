@@ -1,0 +1,19 @@
+﻿ @model iSchoolRemake.Models.FooterModel 
+
+<div class="logo-container">
+    <img src="~/assets/RIT_rgb_hor_w.png" alt="RIT logo" />
+</div>
+<p class="address">
+    1 Lomb Memorial Drive
+    Rochester, NY 14623
+    585-475-2411
+</p>
+<ul class="links">
+    @foreach (var footerData in Model.quickLinks)
+    {
+        <li class="link-container">
+            <a href="@footerData.href" target="_blank">@footerData.title</a>
+        </li>
+    }
+</ul>
+<p>All images, video were sourced from the official <a href="https://www.rit.edu" target="_blank" class="rit-web">RIT website</a> </p>

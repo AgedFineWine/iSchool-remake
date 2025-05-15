@@ -1,0 +1,131 @@
+﻿@model iSchoolRemake.Models.PeopleModel
+@{
+    ViewData["Title"] = "People";
+}
+
+<div class="main-container">
+    <h1>@Model.title</h1>
+    <p>@Model.subTitle</p>
+
+    <div id="allPeople" style="display: none;">
+        <div id="pepTab">
+            <ul>
+                <li><a href="#fac">Faculty</a></li>
+                <li><a href="#staff">Staff</a></li>
+            </ul>
+            <div id="fac">
+                <div class="ppl">
+                    @foreach (var faculty in Model.faculty)
+                    {
+                        <div class="people-list-item">
+                            <div class="img-container">
+                                <img src="@faculty.imagePath" alt="pic" />
+                            </div>
+                            <h3 style="font-size: small; margin-top: 10px;">
+                                @faculty.name
+                            </h3>
+                            <h3 style="font-size: small">
+                                @faculty.title
+                            </h3>
+                            @if (faculty.tagline != "")
+                            {
+                                <h3 style="font-size: small">"@faculty.tagline"</h3>
+                            }
+                            <h3 style="font-size: small">
+                                @faculty.office
+                            </h3>
+                            <h3 style="font-size: small">
+                                @faculty.phone
+                            </h3>
+                            <h3 style="font-size: small">
+                                @faculty.email
+                            </h3>
+                            @if (faculty.interestArea != "")
+                            {
+                                <p style="font-size: small">Interest Areas: 
+                                    @foreach (var interest in faculty.interestArea.Split(" ").ToList())
+                                    {
+                                        <span style="font-size: small">@interest, </span>
+                                    }
+                                </p>
+                            }
+                            @if (faculty.website != "")
+                            {
+                                <h3 style="font: small">
+                                    <a href="@faculty.website" target="_blank" rel="noopener" class="my-site">
+                                        Website <img src="~/assets/external.svg" class="ext"/>
+                                    </a>
+                                </h3>
+                            }
+                            @if (faculty.twitter != "" && faculty.twitter != null)
+                            {
+                                <h3 style="font: small">
+                                    <a href="@faculty.twitter" target="_blank" rel="noopener" class="my-site">
+                                        Twitter <img src="~/assets/external.svg" class="ext"/>
+                                    </a>
+                                </h3>
+                            }
+                        </div>
+                }
+                </div>
+            </div>
+            <div id="staff">
+                <div class="ppl">
+                    @foreach (var staff in @Model.staff)
+                    {
+                        <div class="people-list-item">
+                            <div class="img-container">
+                                <img src="@staff.imagePath" alt="pic" />
+                            </div>
+                            <h3 style="font-size: small; margin-top: 10px;">
+                                @staff.name
+                            </h3>
+                            <h3 style="font-size: small">
+                                @staff.title
+                            </h3>
+                            @if (staff.tagline != "")
+                            {
+                                <h3 style="font-size: small">" @staff.tagline "</h3>
+                            }
+                            <h3 style="font-size: small">
+                                @staff.office
+                            </h3>
+                            <h3 style="font-size: small">
+                                @staff.phone
+                            </h3>
+                            <h3 style="font-size: small">
+                                @staff.email
+                            </h3>
+                            @if (staff.interestArea != "")
+                            {
+                                <p style="font-size: small">
+                                    Interest Areas:
+                                    @foreach (var interest in staff.interestArea.Split(" ").ToList())
+                                    {
+                                        <span style="font-size: small">@interest, </span>
+                                    }
+                                </p>
+                            }
+                            @if (staff.website != "")
+                            {
+                                <h3 style="font: small">
+                                    <a href="@staff.website" target="_blank" rel="noopener" class="my-site">
+                                        Website <img src="~/assets/external.svg" class="ext" />
+                                    </a>
+                                </h3>
+                            }
+                            @if (staff.twitter != "" && staff.twitter != null)
+                            {
+                                <h3 style="font: small">
+                                    <a href="@staff.twitter" target="_blank" rel="noopener" class="my-site">
+                                        Twitter <img src="~/assets/external.svg" class="ext" />
+                                    </a>
+                                </h3>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

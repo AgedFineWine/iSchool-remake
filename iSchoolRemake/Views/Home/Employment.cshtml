@@ -1,0 +1,122 @@
+﻿@model iSchoolRemake.Models.EmploymentModel
+
+@{
+    ViewData["Title"] = "Employment";
+}
+
+<section class="main-container">
+    <h2 style="margin-top: 0;">
+        Employment
+    </h2>
+    <em style="margin-bottom: 20px;">
+        @Model.introduction.title
+    </em>
+    <p>
+        @Model.introduction.content[0].description
+    </p>
+    <div>
+        <h3>@Model.introduction.content[1].title</h3>
+        <p>@Model.introduction.content[1].description</p>
+    </div>
+
+    <h3>@Model.degreeStatistics.title</h3>
+    <div class="stats">
+        @foreach (var stats in Model.degreeStatistics.statistics)
+        {
+            <div class="statBox">
+                <span class="statValue">@stats.value</span>
+                <p class="statDesc">@stats.description</p>
+            </div>
+        }
+    </div>
+
+    <div class="breaker">
+        <h3>@Model.employers.title</h3>
+        <div class="employers">
+            @foreach (var employer in Model.employers.employerNames)
+            {
+                <div class="employer">
+                    @employer
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="breaker">
+        <h3>@Model.careers.title</h3>
+        <div class="careers">
+            @foreach (var career in Model.careers.careerNames)
+            {
+                <div class="career">
+                    @career
+                </div>
+            }
+        </div>
+    </div>
+
+    <h3>@Model.coopTable.title</h3>
+    <table class="coop-table display">
+        <thead>
+            <tr>
+                <th>Employer</th>
+                <th>Degree</th>
+                <th>City</th>
+                <th>Term</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var coop in Model.coopTable.coopInformation)
+            {
+                <tr>
+                    <td>
+                        @coop.employer
+                    </td>
+                    <td>
+                        @coop.degree
+                    </td>
+                    <td>
+                        @coop.city
+                    </td>
+                    <td>
+                        @coop.term
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3 style="margin-top: 3%;">@Model.employmentTable.title</h3>
+    <table class="employ-table display">
+        <thead>
+            <tr>
+                <th>Employer</th>
+                <th>Degree</th>
+                <th>City</th>
+                <th>Title</th>
+                <th>Start Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employment in Model.employmentTable.professionalEmploymentInformation)
+            {
+                <tr>
+                    <td>
+                        @employment.employer
+                    </td>
+                    <td>
+                        @employment.degree
+                    </td>
+                    <td>
+                        @employment.city
+                    </td>
+                    <td>
+                        @employment.title
+                    </td>
+                    <td>
+                        @employment.startDate
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

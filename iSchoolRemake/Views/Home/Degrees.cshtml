@@ -1,0 +1,131 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+
+<div id="degrees" class="main-container">
+    <section>
+        <h2>Undergraduate Programs</h2>
+        <p>
+            Home to the college’s Bachelor of Science degrees in computing and information technologies,
+            human-centered computing, and web and mobile computing, the iSchool comprises the “full stack”
+            computing knowledge that prepares professionals working on both the front- and back-end of the
+            user experience.
+        </p>
+        <div class="undergrad-acc">
+            @foreach (var degree in Model.Degrees.undergraduate)
+            {
+                <h3>@degree.title (@degree.degreeName)</h3>
+                <div>
+                    <p>
+                        @degree.description
+                    </p>
+                    <ul>
+                        @foreach (var concentration in degree.concentrations)
+                        {
+                            <li>
+                                @concentration
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section>
+        <h2>Graduate Programs</h2>
+        <p>
+            A Master of Science Degree from the School of Information provides an opportunity for in-depth study to prepare for today’s high-demand computing careers.
+            Big data is not just high transaction volumes; it is also data in various formats, with high velocity change, and increasing complexity and information
+            delivery must be immediate and on demand.
+        </p>
+        <div class="grad-acc">
+            @foreach (var degree in Model.Degrees.graduate)
+            {
+                <h3>@degree.title (@degree.degreeName)</h3>
+
+                <div>
+                    <p>
+                        @degree.description
+                    </p>
+                    @if (degree.concentrations != null)
+                    {
+                        <p>Concentrations</p>
+                        <ul>
+                        @foreach (var concentration in degree.concentrations)
+                        {
+                            <li>
+                                @concentration
+                            </li>
+                        }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>Certificates</p>
+                        <ul>
+                        @foreach (var concentration in degree.availableCertificates)
+                        {
+                            <li>
+                                @concentration
+                            </li>
+                        }
+                        </ul>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+
+    <section>
+        <h2>Minors</h2>
+        <p>
+            The School of Information offers minors in computing and information technologies, human-centered computing, and web and mobile computing.
+            These minors are designed to provide students with a strong foundation in the principles of computing and information technologies,
+            as well as the skills needed to apply these principles in real-world settings.
+        </p>
+        <div class="minor-acc">
+            @foreach (var minor in Model.Minors.UgMinors)
+            {
+                <h3>@minor.title</h3>
+                <div>
+                <p>
+                    @minor.description
+                </p>
+                <p>Courses</p>
+                    <ul class="minor-btn-container">
+                        @foreach (var course in minor.courses)
+                        {
+                            <li style="list-style-type: none; display: flex;">
+                                <button type="button" data-title="@course" class="course-btn btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    @course
+                                </button>
+                            </li>
+                        }
+                    </ul>
+
+                    <p>@minor.note</p>
+                </div>
+            }
+        </div>
+        <!-- Modal for the person -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

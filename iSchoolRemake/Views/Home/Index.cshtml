@@ -1,0 +1,25 @@
+﻿@model iSchoolRemake.Models.AboutModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+}
+
+<section class="video-section">
+    <div class="video-container">
+        <video src="~/assets/RIT_Main.mp4" loop muted="true" autoplay="true">
+        </video>
+    </div>
+    <div class="deco">
+        Golisano College of
+        Computing and Information Sciences
+    </div>
+</section>
+
+<div class="main-container">
+    <section class="about">
+        <h2 id="about-title">@Model.title</h2>
+        <p>@Model.description</p>
+        <p>@Model.quote</p>
+        <p>--@Model.quoteAuthor--</p>
+    </section>
+</div>
+
